@@ -1,12 +1,12 @@
 <!--  -->
 <template>
-    <div class='whyneed'>
+    <div class='whyneed'  @mouseup="dmouseup">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
                     <h2 class="text-center"> 专家解释 </h2>
                     <p>
-
+                        该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。
                     </p>
                 </div>
                 <div class="col-lg-6">
@@ -19,7 +19,7 @@
         </div>
         <div class="container" style="border: 1px solid #ccc;">
             <div class="row chatline">
-                <img src="/img/touline.jpg">
+                <img src="img/touline.jpg">
                 <p class="text-center">无所谓</p>
             </div>
             <div class="row charnei">
@@ -27,7 +27,7 @@
                     <ul>
                         <li class="">
                             <div class="leftd">
-                                <img src="/img/tou4.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/tou4.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">我的phone</span>
@@ -36,7 +36,7 @@
                         </li>
                         <li class="charneibg">
                             <div class="leftd">
-                                <img src="/img/tou6.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/tou6.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">社会群</span>
@@ -45,7 +45,7 @@
                         </li>
                         <li class="">
                             <div class="leftd">
-                                <img src="/img/tou2.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/tou2.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">网友2</span>
@@ -54,7 +54,7 @@
                         </li>
                         <li class="">
                             <div class="leftd">
-                                <img src="/img/tou1.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/tou1.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">网友1</span>
@@ -76,7 +76,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="ccon" ref="ccon" @mousewheel="handerMiddle">
+                    <div class="ccon" ref="ccon" @mousewheel="handerMiddle" @mousemove="dousemove">
                         <ul class="cconul" ref="cconul">
                             <li v-for="item in chatqq" :key="item.id">
                                 <div class="cclians">
@@ -101,7 +101,9 @@
                             </li>
                         </ul>
                         <div class="cconbar"></div>
-                        <div class="cconswiperbar" ref="cconswiperbar" :style="{'height':barHeight+'px'}"></div>
+                        <div class="cconswiperbar" ref="cconswiperbar" :style="{'height':barHeight+'px'}" 
+                            @mousedown="dmousedown" 
+                        ></div>
                     </div>
                     <div class="cinputbox">
                         <div class="ull">
@@ -133,27 +135,7 @@
             //这里存放数据
             return {
                 chatqq:[
-                    {
-                        id:1,
-                        tou1:'/img/tou5.jpg',
-                        say1:'该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。',
-                        tou2:'/img/tou3.jpg',
-                        say2:'该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。'
-                    },
-                    {
-                        id:2,
-                        tou1:'/img/tou5.jpg',
-                        say1:'该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。',
-                        tou2:'/img/tou3.jpg',
-                        say2:'该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。'
-                    },
-                    {
-                        id:3,
-                        tou1:'/img/tou5.jpg',
-                        say1:'该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。',
-                        tou2:'/img/tou3.jpg',
-                        say2:'该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。'
-                    }
+                   
                 ],
                 //判断是否应该移动
                 flag: false,
@@ -164,35 +146,36 @@
                 // 我要发送的话
                 mytext:'',
                 answ:[
-                    {
-                        id:1,
-                        keys:'汽车',
-                        cons:'人类的历史是勇气的赞歌',
-                        tou1:'/img/tou5.jpg',
-                        tou2:'/img/tou1.jpg'
-                    },
-                    {
-                        id:1,
-                        keys:'?',
-                        cons:'当你打出？时，错误的肯定是你了，你走神了',
-                        tou1:'/img/tou5.jpg',
-                        tou2:'/img/tou2.jpg'
-                    }
+                    
                 ],
                 //判断是否找到关键词
-                cflag:false 
+                cflag:false ,
+                // 判断鼠标是否按下
+                mouflag:false,
+                delY:0
             };
         },
-        // 时时监听
-        // watch:{
-            
-        //     barHeight:function 
-        // },
-        mounted:function(){
-			this.swiperlen();
+        
+        created:function(){
+            this.getchatqq();
+            // this.swiperlen();
 		},
         //方法集合
         methods: {
+            //得到后台数据
+            getchatqq(){
+                this.$axios.get('http://localhost:8080/chatqqServlet',{
+                    params: {
+                        name: 'chatqq',
+                    }
+                }).then((response) => {
+                    // console.log(typeof response.data)
+                    // console.log(response.data);
+                    this.chatqq = response.data.chatqq;
+                    this.answ = response.data.answ;
+                })
+                
+            },
             // 判断是否存在此问题回应
             add(){
                 if(this.mytext == ""){
@@ -201,7 +184,8 @@
                 }else{
                     this.cflag = false
                     this.answ.filter(item => {
-                        if(this.mytext.includes(item.keys) == true){
+                        // console.log(item.akeys)
+                        if(this.mytext.includes(item.akeys) == true){
                             let chaqq = {id:this.chatqq.length+1, tou1:item.tou1,say1:this.mytext,tou2:item.tou2,say2:item.cons}
                             this.chatqq.push(chaqq);
 
@@ -215,7 +199,7 @@
                         }
                     })
                     if(this.cflag == false){
-                        let chaqq = {id:this.chatqq.length+1, tou1:'/img/tou5.jpg',say1:this.mytext,tou2:'/img/tou1.jpg',say2:'这里没有你需要的答案'}
+                        let chaqq = {id:this.chatqq.length+1, tou1:'img/tou5.jpg',say1:this.mytext,tou2:'img/tou1.jpg',say2:'这里没有你需要的答案'}
                         this.chatqq.push(chaqq)
 
                         //添加完数据后清空添加行
@@ -227,7 +211,30 @@
                         this.$refs.cconswiperbar.style.top = this.topx * (this.$refs.ccon.offsetHeight - this.barHeight)/(this.$refs.cconul.offsetHeight - this.$refs.ccon.offsetHeight) + 'px';
                     }
                 }
+               this.swiperlen()
             },
+            // 滑块鼠标按下事件
+            dmousedown(e){
+                var event = e || window.event;
+                this.mouflag = true;
+
+                this.delY = event.clientY - this.$refs.cconswiperbar.offsetTop;
+                // console.log(this.delY)
+				//防止鼠标选择文章内容
+				event.preventDefault();
+            },
+            dousemove(e){
+				if(this.mouflag){
+					var event = e || window.event;
+                    this.topx = (event.clientY - this.delY)*2;
+                    // console.log("topx:" + this.topx)
+					//改变距离
+					this.changeDistance();
+				}
+            },
+            dmouseup(){
+				this.mouflag = false;
+			},
             // 判断滑块长度
             swiperlen(){
                 this.barHeight = (this.$refs.ccon.offsetHeight)*(this.$refs.ccon.offsetHeight)/this.$refs.cconul.offsetHeight
@@ -448,10 +455,7 @@
         /* position: absolute;
         right: 80px; */
     }
-    .whyneed .charnei .ccon .cclians .anstou{
-        /* position: absolute;
-        right: 15px;; */
-    }
+
     /*头像图片样式 */
     .whyneed .charnei .ccon img{
         border-radius: 50%;
@@ -461,7 +465,7 @@
     /* 界面输入框 */
     .cinputbox{
         width: 100%;
-        height: 120px;
+        height: 140px;
         /* background-color: #fff; */
         /* position: relative; */
         border-top: 1px solid #ccc;
@@ -482,7 +486,7 @@
     }
     .cinputbox .cinputtext{
         width: 100%;
-        height: 84px;
+        height: 104px;
         border:none;
     }
 </style>

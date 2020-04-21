@@ -8,11 +8,10 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" :data-slide-to="i.id" v-for="i in tmember" :key="i.id"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                  <div class="carousel-item active">
                         <div class="row">
                             <div class="col-md-3">
                             <div class="client_img-box">
@@ -22,54 +21,29 @@
                             <div class="col-md-9">
                             <div class="client_detail-box">
                                 <h5>
-                                Alex Du
+                                王振超
                                 </h5>
                                 <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                safkldgjosdjigosijg
                                 </p>
                             </div>
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item"  v-for="item in tmember" :key="item.id">
                         <div class="row">
                             <div class="col-md-3">
                             <div class="client_img-box">
-                                <img src="img/client.png" alt="">
+                                <img :src="item.imgurl" alt="">
                             </div>
                             </div>
                             <div class="col-md-9">
                             <div class="client_detail-box">
                                 <h5>
-                                Alex Du
+                                {{ item.name }}
                                 </h5>
                                 <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                </p>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="row">
-                            <div class="col-md-3">
-                            <div class="client_img-box">
-                                <img src="img/client.png" alt="">
-                            </div>
-                            </div>
-                            <div class="col-md-9">
-                            <div class="client_detail-box">
-                                <h5>
-                                Alex Du
-                                </h5>
-                                <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                                ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                {{ item.cons }}
                                 </p>
                             </div>
                             </div>
@@ -86,12 +60,49 @@
        data() {
            //这里存放数据
            return {
-
+             tmember:[
+              //  {
+              //    id:1,
+              //    imgurl:'img/client.png',
+              //    name:'我支持',
+              //    cons:`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              //                   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              //                   ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate`
+              //  },
+              //  {
+              //    id:2,
+              //    imgurl:'img/client.png',
+              //    name:'我支持',
+              //    cons:`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              //                   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              //                   ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate`
+              //  },
+              //  {
+              //    id:3,
+              //    imgurl:'img/client.png',
+              //    name:'我支持',
+              //    cons:`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              //                   dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              //                   ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate`
+              //  }
+             ]
            };
+       },
+       created:function(){
+         this.gettmembers();
        },
        //方法集合
        methods: {
-         
+         gettmembers(){
+               this.$axios.get('http://localhost:8080/TmemberServlet',{
+                   params: {
+                        name: 'teammember',
+                    }
+               }).then((response) => {
+                  //  console.log(response.data);
+                    this.tmember = response.data.teammember;
+               })
+           }
        },
    }
 </script>

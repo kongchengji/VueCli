@@ -8,25 +8,28 @@
                </div>
                <div>
                    <div>
-                       <input type="text" placeholder="您的名字">
+                       <p style="color:red;font-size:12px" ref="dnames"></p>
+                       <input type="text" placeholder="您的名字" v-model="userslist.name" @input="deciveName(userslist.name)">
                    </div>
                    <div>
-                       <input type="text" placeholder="您的邮箱">
+                       <p style="color:red;font-size:12px" ref="demails"></p>
+                       <input type="text" placeholder="您的邮箱" v-model="userslist.email" @input="deciveEmail(userslist.email)">
                    </div>
                    <div>
-                       <input type="text" placeholder="您的电话号码">
+                       <p style="color:red;font-size:12px" ref="dphones"></p>
+                       <input type="text" placeholder="您的电话号码" v-model="userslist.phones" @input="decivePhones(userslist.phones)">
                    </div>
                    <div class="mtz">
-                       <input type="text" placeholder="您的想法">
+                       <input type="text" placeholder="您的想法" v-model="userslist.thoughts">
                    </div>
                    <div class="mtz">
-                       <button type="submit"> 发送 </button>
+                       <button type="submit" @click="sendtojava"> 发送 </button>
                    </div>
                </div>
            </div>
            <div class="col-md-6">
                <div class="contact_img-box">
-                   <img src="/img/students.jpg" alt="装饰图片">
+                   <img src="img/students.jpg" alt="装饰图片">
                </div>
            </div>
        </div>
@@ -38,12 +41,76 @@
         data() {
            //这里存放数据
            return {
-
+               userslist:{
+                   name:'',
+                   email:'',
+                   phones:'',
+                   thoughts:''
+               }
            };
         },
         //方法集合
         methods: {
+            sendtojava(){
+                let name = this.userslist.name;
+                let email = this.userslist.email;
+                let phones = this.userslist.phones;
+                let thoughts = this.userslist.thoughts;
+                // console.log(this.userslist.name+"***");
+                // console.log(name);
+                this.$axios.get('http://localhost:8080/UserInfos',{
+                    params: {
+                        ids:'userinfos',
+                        name:name,
+                        email:email,
+                        phones:phones,
+                        thoughts:thoughts
+                    }
+                }
+                ).then((response) => {
+                    this.userslist.name = "";
+                    this.userslist.email = "";
+                    this.userslist.phones = "";
+                    this.userslist.thoughts = "";
+                    // console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            },
+            // 判断名字的正则表达式
+            deciveName(res){
+                if(res == ""){
+                    this.$refs.dnames.innerHTML = "";
+                }else if(/^[\u4e00-\u9fa5]{1,7}$|^[\dA-Za-z_]{1,14}$/.test(res)){
+                    this.$refs.dnames.innerHTML = "";
+                    // console.log("最长不得超过7个汉字，或14个字节(数字，字母和下划线)正则表达式" + res)
+                }else{
+                    this.$refs.dnames.innerHTML = "*输入最长不得超过7个汉字，或14个字节"
+                }
+            },
+            // 判断Email
+            deciveEmail(res){
+                if(res == ""){
+                    this.$refs.demails.innerHTML = "";
+                }else if(/^[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/.test(res)){
+                    this.$refs.demails.innerHTML = "";
+                }else{
+                    this.$refs.demails.innerHTML = "*输入正确的邮箱"
+                }
+            },
+            decivePhones(res){
+                if(res == ""){
+                    this.$refs.dphones.innerHTML = "";
+                }else if(/^((13[0-9])|(14[0-9])|(15[0-9])|(17[0-9])|(18[0-9]))\d{8}$/.test(res)){
+                    this.$refs.dphones.innerHTML = "";
+                }else{
+                    this.$refs.dphones.innerHTML = "*输入正确的手机号码"
+                }
+            },
+            deciveThought(){
 
+            }
         },
     }
 </script>

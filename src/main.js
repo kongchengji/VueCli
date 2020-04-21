@@ -19,6 +19,10 @@ import router from './router.js'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+//导入axios
+import axios from 'axios'
+Vue.prototype.$axios=axios
+
 Vue.config.productionTip = false
 
 new Vue({

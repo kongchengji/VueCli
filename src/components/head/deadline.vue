@@ -26,7 +26,8 @@
                         <!-- <a class="nav-link" href="#MytariffCards">为什么要智能交通灯</a> -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#MytariffCards">我们的智能交通灯</a>
+                        <router-link class="nav-link" to="/home/ourai"> 我们的智能交通灯 </router-link>
+                        <!-- <a class="nav-link" href="#MytariffCards">我们的智能交通灯</a> -->
                     </li>
                 </ul>
             </div>

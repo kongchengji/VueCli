@@ -25,17 +25,17 @@
                             <p>
                                 {{item.con}}
                             </p>
-                            <ul class="list-unstyled" v-for="(i) in item.exam" :key="i">
-                                <li>
+                            <ul class="list-unstyled">
+                                <li v-for='(is,j) in item.exam.split("|")' :key="j">
                                     <span class="iconfont icon-youshiyuquedian" ></span>
-                                    &nbsp;&nbsp; {{i}}
+                                    &nbsp;&nbsp; {{is}}
                                 </li>
                             </ul>
                         </div>
                         
                     </div>
                     <div class="col-md-6">
-                        <img :src="item.url">
+                        <img :src="item.imgurl">
                     </div>
                     
                 </div>
@@ -43,7 +43,7 @@
             <div class="container" v-else>
                 <div class="row">
                     <div class="col-md-6">
-                        <img :src="item.url">
+                        <img :src="item.imgurl">
                     </div>
                     <div class="col-md-6">
                         <div class="textnei">
@@ -51,10 +51,10 @@
                             <p>
                                 {{item.con}}
                             </p>
-                            <ul class="list-unstyled" v-for="(i) in item.exam" :key="i">
-                                <li>
+                            <ul class="list-unstyled">
+                                <li v-for='(is,j) in item.exam.split("|")' :key="j">
                                     <span class="iconfont icon-youshiyuquedian" ></span>
-                                    &nbsp;&nbsp; {{i}}
+                                    &nbsp;&nbsp; {{is}}
                                 </li>
                             </ul>
                         </div>
@@ -72,17 +72,30 @@
            //这里存放数据
            return {
                listaitraffic:[
-                   { id:1,name:'传统交通路口',url:'img/oldlight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:['缺点1','缺点2','缺点3']},
-                   { id:2,name:'智能交通路口',url:'img/ailight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:['缺点1','缺点2','缺点3']},
-                   { id:3,name:'发展情况',url:'img/oldlight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:['缺点1','缺点2','缺点3']},
-                   { id:4,name:'人们评价',url:'img/ailight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:['缺点1','缺点2','缺点3']}
+                //    { id:1,name:'传统交通路口',url:'img/oldlight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:"缺点1|缺点2|缺点3"},
+                //    { id:2,name:'智能交通路口',url:'img/ailight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:"缺点1|缺点2|缺点3"},
+                //    { id:3,name:'发展情况',url:'img/oldlight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:"缺点1|缺点2|缺点3"},
+                //    { id:4,name:'人们评价',url:'img/ailight.jpg', con:'传统的交通灯大多数都是以固定时长来进行控制的，但是这种交通灯不能对路面的情况进行及时的监控',exam:"缺点1|缺点2|缺点3"}
                ],
                
            };
         },
+        created:function(){
+            this.getjavatables();
+		},
         //方法集合
         methods: {
-
+            getjavatables(){
+                this.$axios.get('http://localhost:8080/aitrafficServlet',{
+                   params: {
+                        name: 'aitraffic',
+                    }
+               }).then((response) => {
+                   console.log(response.data.Listaitraffic);
+                   this.listaitraffic = response.data.Listaitraffic;
+               })
+            //    console.log(this.listaitraffic[0].exam)
+            }
         },
     }
 </script>

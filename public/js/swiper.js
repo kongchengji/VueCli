@@ -1,5 +1,5 @@
 /* ****************************** 改变背景图片 *********************************** */
-console.log("--------")
+// console.log("--------")
 
 if(document.getElementById("swiper")){
     var botback = document.getElementById("swiper");

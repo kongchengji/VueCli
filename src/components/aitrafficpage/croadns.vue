@@ -31,7 +31,7 @@
 					<tr>
 						<th>城市ID</th>
 						<th>城市名称</th>
-						<th>城市汽车保有量</th>
+						<th>城市路口数量</th>
 						<th>城市路口链接</th>
 
 					</tr>
@@ -65,14 +65,14 @@
 				//搜索时的关键词keywords
 				keywords:'',
 				list:[
-					{id: 1,name: '北京' ,content:45256,href: "asdkl.com",ctime: new Date() },
-					{id: 2,name: '上海' ,content:23546,href: "asdkl.com",ctime: new Date() },
-					{id: 3,name: '南京' ,content:45256,href: "asdkl.com",ctime: new Date() },
-					{id: 4,name: '武昌' ,content:23546,href: "asdkl.com",ctime: new Date() },
-					{id: 5,name: '嘉兴' ,content:45256,href: "asdkl.com",ctime: new Date() },
-					{id: 6,name: '湖州' ,content:23546,href: "asdkl.com",ctime: new Date() },
-					{id: 7,name: '昆明' ,content:45256,href: "asdkl.com",ctime: new Date() },
-					{id: 8,name: '酒泉' ,content:23546,href: "http://www.baidu.com",ctime: new Date() },
+					// {id: 1,name: '北京' ,content:45256,href: "asdkl.com",ctime: new Date() },
+					// {id: 2,name: '上海' ,content:23546,href: "asdkl.com",ctime: new Date() },
+					// {id: 3,name: '南京' ,content:45256,href: "asdkl.com",ctime: new Date() },
+					// {id: 4,name: '武昌' ,content:23546,href: "asdkl.com",ctime: new Date() },
+					// {id: 5,name: '嘉兴' ,content:45256,href: "asdkl.com",ctime: new Date() },
+					// {id: 6,name: '湖州' ,content:23546,href: "asdkl.com",ctime: new Date() },
+					// {id: 7,name: '昆明' ,content:45256,href: "asdkl.com",ctime: new Date() },
+					// {id: 8,name: '酒泉' ,content:23546,href: "http://www.baidu.com",ctime: new Date() },
 				]
            };
 	   },
@@ -82,8 +82,7 @@
        //方法集合
        methods: {
 		   now(){
-				// jsonObj[0].id = jsonObj[0].id+8
-				console.log('***')
+				// console.log('***')
 				this.$http({
 					// url:"http://vue.studyit.io/api/getlunbo",
 					url:"http://localhost:8080/cityroadsServlet", //请求路径
@@ -109,15 +108,20 @@
 						return newList
 					},
 			sort(n){
-				this.list.sort(function(a,b){
+				this.list.sort((a,b) => {
 					if(n === 1){  //升序
 						return a.content - b.content;
 					}if(n === 0){ //降序
 						return b.content - a.content;
-					}else{
-						return a.id - b.id;
 					}
 				})
+				if(n === 2){
+					this.keywords = "";
+					this.list.sort((a,b)=>{
+						return a.id - b.id;
+					})
+					
+				}
 			}
        },
    }
