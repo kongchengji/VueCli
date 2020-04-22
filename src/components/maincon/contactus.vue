@@ -29,7 +29,7 @@
            </div>
            <div class="col-md-6">
                <div class="contact_img-box">
-                   <img src="img/students.jpg" alt="装饰图片">
+                   <img src="img/contactus/students.jpg" alt="装饰图片">
                </div>
            </div>
        </div>

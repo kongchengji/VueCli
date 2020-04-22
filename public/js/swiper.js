@@ -25,9 +25,6 @@ if(document.getElementById("swiper")){
             var jspic1 = document.getElementsByClassName("backpic")[0];
             botback.removeChild(jspic1);
         }
-        
-    
-    //	botback.removeChild(jspic1);
     }
     function sleep (time) {
         return new Promise((resolve) => setTimeout(resolve, time));

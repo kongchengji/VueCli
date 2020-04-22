@@ -15,7 +15,7 @@
                         <div class="row">
                             <div class="col-md-3">
                             <div class="client_img-box">
-                                <img src="img/client.png" alt="">
+                                <img src="img/teammembers/per1.jpeg" alt="">
                             </div>
                             </div>
                             <div class="col-md-9">
@@ -24,7 +24,7 @@
                                 王振超
                                 </h5>
                                 <p>
-                                safkldgjosdjigosijg
+                                我是王振超，这是我的自我介绍
                                 </p>
                             </div>
                             </div>
@@ -134,7 +134,9 @@
   .client_section img {
     width: 100%;
   }
-
+  .client_img-box img{
+    border-radius: 50%;
+  }
   .client_img-box::before,
   .client_img-box::after {
     content: "";

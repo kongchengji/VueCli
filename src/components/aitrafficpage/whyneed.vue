@@ -9,17 +9,22 @@
                         该项目基于 JavaScript 开发，让用户能在浏览器中快速构建动画模型，且支持导出成视频或 gif 动图，整体功能较完善，感兴趣的同学可以体验下。
                     </p>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-6" ref="shipin">
                     <!-- 视频 -->
                     <div class="audios">
-
+                        <video id="myVideo" class="video-js" muted >
+                        <source
+                            src="/aduio/tv2.mp4"
+                            type="video/mp4"
+                        >
+                        </video>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container" style="border: 1px solid #ccc;">
             <div class="row chatline">
-                <img src="img/touline.jpg">
+                <img src="img/whyneed/touline.jpg">
                 <p class="text-center">无所谓</p>
             </div>
             <div class="row charnei">
@@ -27,7 +32,7 @@
                     <ul>
                         <li class="">
                             <div class="leftd">
-                                <img src="img/tou4.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/whyneed/tou4.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">我的phone</span>
@@ -36,7 +41,7 @@
                         </li>
                         <li class="charneibg">
                             <div class="leftd">
-                                <img src="img/tou6.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/whyneed/tou6.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">社会群</span>
@@ -45,7 +50,7 @@
                         </li>
                         <li class="">
                             <div class="leftd">
-                                <img src="img/tou2.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/whyneed/tou2.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">网友2</span>
@@ -54,7 +59,7 @@
                         </li>
                         <li class="">
                             <div class="leftd">
-                                <img src="img/tou1.jpg" style="border-radius: 50%;margin: 10px;">
+                                <img src="img/whyneed/tou1.jpg" style="border-radius: 50%;margin: 10px;">
                             </div>
                             <div class="rightd">
                                 <span class="innername">网友1</span>
@@ -159,9 +164,27 @@
         created:function(){
             this.getchatqq();
             // this.swiperlen();
-		},
+        },
+        mounted() { 
+            this.initVideo();
+        },
         //方法集合
         methods: {
+            //初始化视频方法
+            initVideo() { 
+                let myPlayer = this.$video(myVideo, {
+                    //确定播放器是否具有用户可以与之交互的控件。没有控件，启动视频播放的唯一方法是使用autoplay属性或通过Player API。
+                    controls: true,
+                    //自动播放属性,muted:静音播放
+                    // autoplay: "muted",
+                    //建议浏览器是否应在<video>加载元素后立即开始下载视频数据。
+                    preload: "auto",
+                    //设置视频播放器的显示宽度（以像素为单位）
+                    width: 540,
+                    //设置视频播放器的显示高度（以像素为单位）
+                    height: 340
+                });
+            },
             //得到后台数据
             getchatqq(){
                 this.$axios.get('http://localhost:8080/chatqqServlet',{
@@ -199,7 +222,7 @@
                         }
                     })
                     if(this.cflag == false){
-                        let chaqq = {id:this.chatqq.length+1, tou1:'img/tou5.jpg',say1:this.mytext,tou2:'img/tou1.jpg',say2:'这里没有你需要的答案'}
+                        let chaqq = {id:this.chatqq.length+1, tou1:'img/whyneed/tou5.jpg',say1:this.mytext,tou2:'img/whyneed/tou1.jpg',say2:'这里没有你需要的答案'}
                         this.chatqq.push(chaqq)
 
                         //添加完数据后清空添加行
@@ -291,8 +314,8 @@
     .whyneed .audios{
         width: 100%;
         height: 100%;
-        padding-top:100%;
-        background-color: antiquewhite;
+        /* padding-top:100%; */
+        /* background-color: antiquewhite; */
     }
     /* 聊天界面头 */
     .whyneed .chatline{

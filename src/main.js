@@ -25,6 +25,11 @@ Vue.prototype.$axios=axios
 
 Vue.config.productionTip = false
 
+//引入video.js视频播放器
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+Vue.prototype.$video = Video
+
 new Vue({
   render: h => h(App),
   router
