@@ -14,7 +14,7 @@
     "core-js": "^3.6.4",
     "css-loader": "^3.4.2",
     "html-webpack-plugin": "^4.0.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "popper.js": "^1.16.1",
