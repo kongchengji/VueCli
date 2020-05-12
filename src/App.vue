@@ -1,12 +1,10 @@
 <!--  -->
 <template>
    <div class='indexmain'>
+     <!-- 头部导航栏 -->
       <deadline></deadline>
-
-      <router-view></router-view>
-
-      <!-- 关于我们 -->
-      <aboutwe></aboutwe>
+      <!-- 路由导航 -->
+      <router-view></router-view> 
       <!-- 网站备案信息 -->
       <footerline></footerline>
    </div>
@@ -18,7 +16,6 @@ import deadline from './components/head/deadline.vue'
 
 // //导入index页面尾部
 import footerline from './components/bottom/footer.vue'
-import aboutwe from './components/bottom/aboutwe.vue'
 
     export default {
        data() {
@@ -33,8 +30,7 @@ import aboutwe from './components/bottom/aboutwe.vue'
        },
        components:{
            deadline,
-           footerline,
-           aboutwe
+           footerline
        }
     }
 </script>

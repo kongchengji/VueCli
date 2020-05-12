@@ -92,6 +92,8 @@
                 </div>
             </div>
         </div>
+        <!-- 留言板功能 -->
+        <leavemessage></leavemessage>
         <!-- 团队成员 -->
         <teammember></teammember>
     </div>
@@ -99,6 +101,7 @@
 
 <script>
     import teammember from '../maincon/teammember.vue'
+    import leavemessage from '../extraFun/leavemessage.vue'
 
     var zindex = 3;
    export default {
@@ -202,7 +205,8 @@
             }
        },
        components:{
-            teammember
+            teammember,
+            leavemessage
        }
    }
 </script>

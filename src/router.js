@@ -7,6 +7,8 @@ import cityrnums from './components/aitrafficpage/croadns.vue'
 import pollution from './components/aitrafficpage/thepollution.vue'
 import whyneed from './components/aitrafficpage/whyneed.vue'
 import ourai from './components/aitrafficpage/ouraitraffic.vue'
+import adminlogin from './components/extraFun/admin.vue'
+import admincon from './components/extraFun/admincon.vue'
 
 // 创建路由对象
 var router = new VueRouter({
@@ -21,6 +23,10 @@ var router = new VueRouter({
         { path: '/home/pollution', component: pollution },
         { path: '/home/whyneed', component: whyneed },
         { path: '/home/ourai', component: ourai },
+        { path: '/home/adminlogin', component: adminlogin },
+        { path: '/home/admincon', component: admincon },
+        
+        
     ]
 })
   

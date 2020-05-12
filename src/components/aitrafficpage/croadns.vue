@@ -1,56 +1,56 @@
 <!--  -->
 <template>
    <div class='croadns'>
-       <div class="panel panel-primary">
-			    <div class="panel-heading">
-			        <h3 class="panel-title"> 添加任务 </h3>
-			    </div>
-			    <div class="panel-body form-inline">
-					<label>
-                        数据显示：
-                        <input type="button" value="更新" class="btn btn-primary" @click="now"/>
-			        </label>
-                    <br>
-			        <label>
-			        	搜索城市名称关键字:
-			        	<input type="text" value="" class="form-control" v-model="keywords"/>
-			        	<br>
-			        </label>
-                    <br/>
-			        <div>城市汽车保有量排序：</div>
-			        <label>   	
-						<input id="sort0" type="button" value="归位" class="btn btn-primary" @click="sort(2)" />
-			        	<input id="sort1" type="button" value="升序" class="btn btn-primary" @click="sort(1)" />
-			        	<input id="sort2" type="button" value="降序" class="btn btn-primary" @click="sort(0)" />
-			        </label>
-			    </div>
+        <div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title"> 城市路口数据 </h3>
 			</div>
+			<div class="panel-body form-inline">
+				<label>
+					数据显示：
+					<input type="button" value="更新" class="btn btn-primary" @click="now"/>
+				</label>
+				<br>
+				<label>
+					搜索城市名称关键字:
+					<input type="text" value="" class="form-control" v-model="keywords"/>
+					<br>
+				</label>
+				<br/>
+				<div>城市汽车保有量排序：</div>
+				<label>   	
+					<input id="sort0" type="button" value="归位" class="btn btn-primary" @click="sort(2)" />
+					<input id="sort1" type="button" value="升序" class="btn btn-primary" @click="sort(1)" />
+					<input id="sort2" type="button" value="降序" class="btn btn-primary" @click="sort(0)" />
+				</label>
+			</div>
+		</div>
         <!--table的class去使用bootstrap设置样式-->
-			<table class="table table-hover table-bordered table-striped">
-				<thead>
-					<tr>
-						<th>城市ID</th>
-						<th>城市名称</th>
-						<th>城市路口数量</th>
-						<th>城市路口链接</th>
+		<table class="table table-hover table-bordered table-striped">
+			<thead>
+				<tr>
+					<th>城市ID</th>
+					<th>城市名称</th>
+					<th>城市路口数量</th>
+					<th>城市路口链接</th>
 
-					</tr>
-				</thead>
-				<tbody>
-					<tr v-for="item in search(keywords)" :key='item.id'>
-						<td > {{ item.id }} </td>
-						<td > {{ item.name }} </td>
-						<td > {{ item.content }} </td>
-						<td >  
-							<a style="text-decoration: none;" target="_blank" :href="item.href"> {{ item.href }} </a> 
-							<!--<router-link>{{ item.href }}</router-link>-->
-							
-						</td>
-						<!--dateFormat过滤日期-->
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in search(keywords)" :key='item.id'>
+					<td > {{ item.id }} </td>
+					<td > {{ item.name }} </td>
+					<td > {{ item.content }} </td>
+					<td >  
+						<a style="text-decoration: none;" target="_blank" :href="item.href"> {{ item.href }} </a> 
+						<!--<router-link>{{ item.href }}</router-link>-->
 						
-					</tr>
-				</tbody>
-			</table>
+					</td>
+					<!--dateFormat过滤日期-->
+					
+				</tr>
+			</tbody>
+		</table>
    </div>
 </template>
 

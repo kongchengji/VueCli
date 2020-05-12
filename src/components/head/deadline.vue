@@ -15,18 +15,18 @@
                     </li>
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="#myEducation">全国汽车保有量</a> -->
-                        <router-link class="nav-link" to="/home/cityrnums"> 全国汽车保有量 </router-link>
+                        <router-link class="nav-link" to="/home/cityrnums"> 全国各城市路口数量 </router-link>
                     </li>
                     <li class="nav-item">
                         <!-- <a class="nav-link" href="#/home/aitraffic">汽车污染</a> -->
                         <router-link class="nav-link" to="/home/pollution"> 汽车怠速消耗 </router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/home/whyneed"> 为什么要智能交通灯 </router-link>
+                        <router-link class="nav-link" to="/home/whyneed"> 为什么要智能信号灯 </router-link>
                         <!-- <a class="nav-link" href="#MytariffCards">为什么要智能交通灯</a> -->
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/home/ourai"> 我们的智能交通灯 </router-link>
+                        <router-link class="nav-link" to="/home/ourai"> 我们的智能信号灯 </router-link>
                         <!-- <a class="nav-link" href="#MytariffCards">我们的智能交通灯</a> -->
                     </li>
                 </ul>

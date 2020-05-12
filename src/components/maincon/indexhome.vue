@@ -10,6 +10,8 @@
         <hr>
         <!-- 联系我们 -->
         <contactus></contactus>
+        <!-- 关于我们 -->
+      <aboutwe></aboutwe>
    </div>
 </template>
 
@@ -19,6 +21,8 @@
     import cargetmore from '../maincon/carsgetmore.vue'
     import teammember from '../maincon/teammember.vue'
     import contactus from '../maincon/contactus.vue'
+
+    import aboutwe from '../bottom/aboutwe.vue'
 
     export default {
        data() {
@@ -35,7 +39,8 @@
             swiper1,
             teammember,
             contactus,
-            cargetmore
+            cargetmore,
+            aboutwe
        }
    }
 </script>
